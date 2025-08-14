@@ -1,31 +1,11 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+'use client';
+import { Container } from 'react-bootstrap';
 
 export default function Home() {
-  return (
-    <>
-      <Head>
-        <title>Weather App</title>
-      </Head>
-      <div
-        className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
-      >
-        <main className={styles.main}>
-          Welcome to the Weather App
-        </main>
-      </div>
-    </>
-  );
+    return (
+        <Container className="py-5">
+            <h1 className='mb-4 text-center'>Weather App</h1>
+            <p className='text-center text-muted'>Search for any city to see its current weather.</p>
+        </Container>
+    );
 }
