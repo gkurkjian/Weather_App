@@ -7,6 +7,7 @@ export default function Home() {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
 
   const handleSearch = async (city) => {
     setLoading(true);
@@ -34,9 +35,28 @@ export default function Home() {
   };
 
   return (
-    <Container className="py-5">
-      <h1 className="mb-4 text-center">Weather App</h1>
+    <div className={darkMode ? 'bg-dark text-light min-vh-100' : 'bg-light text-dark min-vh-100'}>
+      <Container className="py-5">
+        {/* Dark Mode Toggle */}
+        <div className="d-flex justify-content-end mb-3">
+          <div className="form-check form-switch">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="darkModeSwitch"
+              checked={darkMode}
+              onChange={() => setDarkMode(!darkMode)}
+            />
+            <label className="form-check-label ms-2" htmlFor="darkModeSwitch">
+              {darkMode ? 'Dark Mode' : 'Light Mode'}
+            </label>
+          </div>
+        </div>
 
+        <h1 className="mb-4 text-center">Weather App</h1>
+
+        
+      <Container className="py-5">
       {/* Empty state prompt */}
       { !weatherData && !loading && !error && (
         <p variant="info" className="text-center">
@@ -67,5 +87,7 @@ export default function Home() {
       {/* This we are importing from WeatherCard.js */}
       <WeatherCard data={weatherData} />  
     </Container>
+    </Container>
+    </div>
   );
 }
