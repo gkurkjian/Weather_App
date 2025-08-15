@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Alert, Spinner, Row, Col } from 'react-bootstrap';
+import { Container, Alert, Spinner } from 'react-bootstrap';
 import SearchBar from '@/components/SearchBar';
 import WeatherCard from '@/components/WeatherCard';
 
@@ -53,9 +53,18 @@ export default function Home() {
             </label>
           </div>
         </div>
-
-        <h1 className="mb-4 text-center">Weather App</h1>
-
+        
+        <h1 className="mb-4 text-center">
+          <span
+          style={{ cursor: 'pointer', userSelect: 'none' }}
+          onClick={() => {
+            setWeatherData(null);
+            setError(null);
+            setLoading(false);
+          }}>
+            Weather App
+          </span>
+        </h1>
 
       <Container className="py-5">
       {/* Empty state prompt */}
@@ -83,10 +92,8 @@ export default function Home() {
         </div>
       )}
 
-
-
       {/* This we are importing from WeatherCard.js */}
-      <WeatherCard data={weatherData} />  
+    <WeatherCard data={weatherData} darkMode={darkMode} />
     </Container>
     </Container>
     </div>

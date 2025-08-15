@@ -1,29 +1,32 @@
 import { Card } from 'react-bootstrap';
 import 'animate.css';
 
-export default function WeatherCard({ data }) {
+export default function WeatherCard({ data, darkMode }) {
   if (!data || !data.current) return null;
 
   const { location, current } = data;
 
   return (
     <Card
-      className="mt-4 p-4 shadow-lg border-0 animate__animated animate__fadeIn"
+      className={`mt-4 p-4 shadow-lg border-0 animate__animated animate__fadeIn`}
+      bg={darkMode ? 'secondary' : 'light'}
+      text={darkMode ? 'light' : 'dark'}
       style={{
         maxWidth: '600px',
         margin: '0 auto',
-        backgroundColor: 'inherit',
-        color: 'inherit',
+        backgroundColor: darkMode ? '#143a40' : '', // Custom dark grey
       }}
     >
+
       <Card.Body className="text-center">
         {/* Weather icon */}
-        <Card.Img
-          src={`https:${current.condition.icon}`}
-          alt={current.condition.text}
-          className="mx-auto mb-3"
-          style={{ width: '80px' }}
-        />
+      <Card.Img
+        src={`https:${current.condition.icon}`}
+        alt={current.condition.text}
+        className="mx-auto mb-3"
+        style={{ width: '80px' }}
+      />
+
 
         {/* City + Country */}
         <Card.Title as="h2" className="mb-2">
