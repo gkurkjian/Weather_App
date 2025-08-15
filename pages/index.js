@@ -21,6 +21,7 @@ export default function Home() {
       );
 
       const data = await res.json();
+      console.log(data, 'Weather data received');
 
       if (!data.location) {
         throw new Error(`City '${city}' not found. Please try another one.`);
@@ -55,7 +56,7 @@ export default function Home() {
 
         <h1 className="mb-4 text-center">Weather App</h1>
 
-        
+
       <Container className="py-5">
       {/* Empty state prompt */}
       { !weatherData && !loading && !error && (
