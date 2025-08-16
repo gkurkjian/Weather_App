@@ -1,40 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Weather App
 
-## Getting Started
+This is a simple weather application built with **Next.js** and **React Bootstrap**. It allows users to search for the current weather in any city worldwide, view weather details, and toggle between light and dark modes.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Search by City:** Enter any city name to get the current weather.
+- **Weather Details:** Displays temperature, humidity, wind speed, weather condition, and local time.
+- **Responsive UI:** Uses React Bootstrap for a clean, responsive design.
+- **Dark Mode:** Toggle between light and dark themes.
+- **Animated Weather Card:** Weather details appear with a smooth animation.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How It Works
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- The app uses the [WeatherAPI.com](https://www.weatherapi.com/) service to fetch real-time weather data.
+- When a user enters a city and submits, the app sends a request to the WeatherAPI endpoint:
+  ```
+  https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=CITY_NAME
+  ```
+- The API key is stored in an environment variable:  
+  `NEXT_PUBLIC_WEATHER_API_KEY`
+- The response is displayed in a styled card with weather details and an icon.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Main Components
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+- **pages/index.js:** Main page, handles state, search logic, and layout.
+- **components/SearchBar.js:** Input field for searching cities.
+- **components/WeatherCard.js:** Displays weather information in a card.
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## How to Run
 
-## Learn More
+1. **Clone the repository:**
+   ```
+   git clone <your-repo-url>
+   cd Weather_Project/my-app
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies:**
+   ```
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+3. **Set up your WeatherAPI key:**
+   - Create a `.env.local` file in the `my-app` directory.
+   - Add your API key:
+     ```
+     NEXT_PUBLIC_WEATHER_API_KEY=your_api_key_here
+     ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Start the development server:**
+   ```
+   npm run dev
+   ```
 
-## Deploy on Vercel
+5. **Open your browser:**  
+   Visit [http://localhost:3000](http://localhost:3000)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+- Only the "Weather App" text is clickable to reset the app state.
+- The app does not reload the page when resetting; it simply clears the weather data and errors for a fast user experience.
+- Make sure you have a valid API key from [WeatherAPI.com](https://www.weatherapi.com/).
+
+---
+
+**Author:**  
+This project was created as a learning exercise to demonstrate React, Next.js, and
